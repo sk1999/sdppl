@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import './page3.dart';
 
 class Dop extends StatefulWidget {
+
+ final String addr;
+
+  Dop(this.addr);
+
   @override
   State<StatefulWidget> createState() {
-    return _Dss();
+    return _Dss(addr);
   }
 }
 
@@ -13,6 +18,8 @@ class _Dss extends State<Dop> {
   int radioGroup = 0,rG=0;
   String mypa,pnumber,dpt='Department',pos;
   var _dprt = ['Gray Sikka','Grey Godown','Drum','Jet','Stenter','Batching','Printing 1','Printing 2','Printing 3','Printing 4','Printing 5','Printing 6','Printing 7','Printing 8','Printing 9','Loop','Washing','Padding','Finish','Zero','Folding','Colour Khaata','Colour store','Boiler','Sample Table','Design Department','Computer Tracing','Office Staff','General Staff','Master Staff','Loading/Packaging','Reel','Charkha','Maintanance',''];
+
+  _Dss(this.mypa);
 
   Widget common() {
     return Column(
@@ -27,16 +34,17 @@ class _Dss extends State<Dop> {
     );
   }
 
-  void radioEventHandler(int value) {
+  void radioEventhandler(int value) {
     setState(() {
       radioGroup = value;
       switch (radioGroup) {
         case 0:
-          mypa = 'Male';
+          mypa = mypa;
           break;
       }
     });
   }
+
 
   void radioeventhandler(int value) {
     setState(() {
@@ -106,6 +114,9 @@ class _Dss extends State<Dop> {
     return Scaffold(
         appBar: AppBar(
           title: Text('REGISTRATION'),
+    leading: IconButton(icon:Icon(Icons.arrow_back),
+    onPressed:() => Navigator.pop(context),
+    )
         ),
         body: Column(children: <Widget>[
           common(),
@@ -118,14 +129,14 @@ class _Dss extends State<Dop> {
               new RadioListTile<int>(
               value: 0,
                 groupValue: radioGroup,
-                onChanged: radioEventHandler,
+                onChanged: radioEventhandler,
                 title: new Text('Same as Present Address'),
                 activeColor: Colors.blueAccent,
               ),
               new RadioListTile<int>(
                 value: 1,
                 groupValue: radioGroup,
-                onChanged: radioEventHandler,
+                onChanged: radioEventhandler,
                 title: new Text('Other'),
                 activeColor: Colors.blueAccent,
               ),

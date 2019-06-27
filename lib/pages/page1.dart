@@ -22,13 +22,19 @@ class _Dsp extends State<Dos> {
       radioGroup = value;
       switch (radioGroup) {
         case 0:
-          myG = 'Male';
+          setState(() {
+            myG = 'Male';
+          });
           break;
         case 1:
-          myG = 'Female';
+          setState(() {
+            myG = 'Female';
+          });
           break;
         case 2:
-          myG = 'Other';
+          setState(() {
+            myG = 'Others';
+          });
           break;
       }
     });
@@ -104,204 +110,207 @@ class _Dsp extends State<Dos> {
           children: <Widget>[
           common(),
       Expanded(
-          child: ListView(
+          child: Form(
+            child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             children: <Widget>[
-          TextField(
-          keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-                border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(20.0)
-                ),
-                labelText: 'UID'
-            ),
-            onChanged: (String value) {
-              setState(() {
-                uid = value;
-              }
-              );
-            },
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          TextField(
-            decoration: InputDecoration(
-                border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(20.0)
-                ),
-                labelText: 'Name'
-            ),
-            onChanged: (String value) {
-              setState(() {
-                name = value;
-              }
-              );
-            },
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          TextField(
-            decoration: InputDecoration(
-                border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(20.0)
-                ),
-                labelText: "Father's Name"
-            ),
-            onChanged: (String value) {
-              setState(() {
-                fname = value;
-              }
-              );
-            },
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Text('Date: ${date.toString()}'),
-          FlatButton(
-            child: Text('Select date'),
-            onPressed: () {
-              _selectDate(context);
-            },
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Text('Gender'),
-          Column(
-            children: <Widget>[
-              new RadioListTile<int>(
-                value: 0,
-                groupValue: radioGroup,
-                onChanged: radioEventHandler,
-                title: new Text('Male'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 1,
-                groupValue: radioGroup,
-                onChanged: radioEventHandler,
-                title: new Text('Female'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 2,
-                groupValue: radioGroup,
-                onChanged: radioEventHandler,
-                title: new Text('Other'),
-                activeColor: Colors.blueAccent,
-              )
-            ],
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Text('Current Address'),
-          Column(
-            children: <Widget>[
-              new RadioListTile<int>(
-                value: 0,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('Rameshwar Colony, GIDC, Sachin'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 1,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('Unn patiya, Bhestan'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 2,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('Ganesh Nagar, Pandesara'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 3,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('GHB, Pandesara'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 4,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('GHB, Sachin'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 5,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('Slum Board , Sachin'),
-                activeColor: Colors.blueAccent,
-              ),
-              new RadioListTile<int>(
-                value: 6,
-                groupValue: rG,
-                onChanged: radioEventhandler,
-                title: new Text('Other'),
-                activeColor: Colors.blueAccent,
-              ),
-              TextField(
+              TextFormField(
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     border: new OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(20.0)
                     ),
-                    labelText: "other address"
+                    labelText: 'UID'
                 ),
-                onChanged: (String value) {
+                onSaved: (String value) {
                   setState(() {
-                    myA = value;
+                    uid = value;
                   }
+                  );
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(20.0)
+                    ),
+                    labelText: 'Name'
+                ),
+                onSaved: (String value) {
+                  setState(() {
+                    name = value;
+                  }
+                  );
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(20.0)
+                    ),
+                    labelText: "Father's Name"
+                ),
+                onSaved: (String value) {
+                  setState(() {
+                    fname = value;
+                  }
+                  );
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text('Date: ${date.toString()}'),
+              FlatButton(
+                child: Text('Select date'),
+                onPressed: () {
+                  _selectDate(context);
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text('Gender'),
+              Column(
+                children: <Widget>[
+                  new RadioListTile<int>(
+                    value: 0,
+                    groupValue: radioGroup,
+                    onChanged: radioEventHandler,
+                    title: new Text('Male'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 1,
+                    groupValue: radioGroup,
+                    onChanged: radioEventHandler,
+                    title: new Text('Female'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 2,
+                    groupValue: radioGroup,
+                    onChanged: radioEventHandler,
+                    title: new Text('Other'),
+                    activeColor: Colors.blueAccent,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text('Current Address'),
+              Column(
+                children: <Widget>[
+                  new RadioListTile<int>(
+                    value: 0,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('Rameshwar Colony, GIDC, Sachin'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 1,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('Unn patiya, Bhestan'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 2,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('Ganesh Nagar, Pandesara'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 3,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('GHB, Pandesara'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 4,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('GHB, Sachin'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 5,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('Slum Board , Sachin'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  new RadioListTile<int>(
+                    value: 6,
+                    groupValue: rG,
+                    onChanged: radioEventhandler,
+                    title: new Text('Other'),
+                    activeColor: Colors.blueAccent,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(20.0)
+                        ),
+                        labelText: "other address"
+                    ),
+                    onSaved: (String value) {
+                      setState(() {
+                        myA = value;
+                      }
+                      );
+                    },
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(20.0)
+                    ),
+                    labelText: "Current Phone no."
+                ),
+                onSaved: (String value) {
+                  setState(() {
+                    number = value;
+                  }
+                  );
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              RaisedButton(
+                color: Theme
+                    .of(context)
+                    .primaryColor,
+                child: Text('Next'),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Dop(myA),
+                    ),
                   );
                 },
               )
             ],
           ),
-          SizedBox(
-            height: 20.0,
           ),
-          TextField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-                border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(20.0)
-                ),
-                labelText: "Current Phone no."
-            ),
-            onChanged: (String value) {
-              setState(() {
-                number = value;
-              }
-              );
-            },
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          RaisedButton(
-          color: Theme
-          .of(context)
-          .primaryColor,
-      child: Text('Next'),
-      onPressed: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => Dop(),
-          ),
-        );
-      },
-    )
-    ],
-    ),
     )
     ]
     )
