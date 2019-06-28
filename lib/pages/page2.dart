@@ -3,23 +3,26 @@ import './page3.dart';
 
 class Dop extends StatefulWidget {
 
- final String addr;
+  final String uid, name, fname, number, myA, myG;
+  final DateTime date;
 
-  Dop(this.addr);
-
+  Dop(this.uid,this.name,this.fname,this.number,this.myA,this.myG,this.date);
   @override
   State<StatefulWidget> createState() {
-    return _Dss(addr);
+    return _Dss(uid,name,fname,number,myA,myG,date);
   }
 }
 
 class _Dss extends State<Dop> {
 
+  String uid, name, fname, number, myA, myG;
+  DateTime date;
+
   int radioGroup = 0,rG=0;
   String mypa,pnumber,dpt='Department',pos;
   var _dprt = ['Gray Sikka','Grey Godown','Drum','Jet','Stenter','Batching','Printing 1','Printing 2','Printing 3','Printing 4','Printing 5','Printing 6','Printing 7','Printing 8','Printing 9','Loop','Washing','Padding','Finish','Zero','Folding','Colour Khaata','Colour store','Boiler','Sample Table','Design Department','Computer Tracing','Office Staff','General Staff','Master Staff','Loading/Packaging','Reel','Charkha','Maintanance',''];
 
-  _Dss(this.mypa);
+  _Dss(this.uid,this.name,this.fname,this.number,this.myA,this.myG,this.date);
 
   Widget common() {
     return Column(
@@ -39,7 +42,9 @@ class _Dss extends State<Dop> {
       radioGroup = value;
       switch (radioGroup) {
         case 0:
-          mypa = mypa;
+          setState(() {
+            mypa = mypa;
+          });
           break;
       }
     });
@@ -51,43 +56,69 @@ class _Dss extends State<Dop> {
       rG = value;
       switch (rG) {
         case 0:
-          dpt = 'Operator';
+          setState(() {
+            dpt = 'Operator';
+          });
           break;
         case 1:
-          dpt = 'Assistant Operator';
+          setState(() {
+            dpt = 'Assistant Operator';
+        });
           break;
         case 2:
-          dpt = 'Border Man';
+          setState(() {
+            dpt = 'Border Man';
+          });
           break;
         case 3:
-          dpt = 'Checker Man';
+          setState(() {
+            dpt = 'Checker Man';
+          });
           break;
         case 4:
-          dpt = 'Helper';
+          setState(() {
+            dpt = 'Helper';
+          });
           break;
         case 5:
-          dpt = 'Flatter Man';
+          setState(() {
+            dpt = 'Flatter Man';
+          });
           break;
         case 6:
-          dpt = 'Kanji Man';
+          setState(() {
+            dpt = 'Kanji Man';
+          });
           break;
         case 7:
-          dpt = 'Silai Man';
+          setState(() {
+            dpt = 'Silai Man';
+          });
           break;
         case 8:
-          dpt = 'Jobber';
+          setState(() {
+            dpt = 'Jobber';
+          });
           break;
         case 9:
-          dpt = 'meter counter';
+          setState(() {
+            dpt = 'meter counter';
+          });
           break;
         case 10:
-          dpt = 'supervisor';
+          setState(() {
+            dpt = 'supervisor';
+          });
           break;
         case 11:
-          dpt = 'Programmer';
+          setState(() {
+            dpt = 'Programmer';
+          });
           break;
         case 12:
-          dpt = 'Contractor';
+          setState(() {
+            dpt = 'Contractor';
+          });
           break;
       }
     });
@@ -334,7 +365,7 @@ class _Dss extends State<Dop> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => Dud(),
+                      builder: (BuildContext context) => Dud(uid, name, fname, number, myA, myG, date, mypa, pnumber, dpt, pos, jdate),
                     ),
                   );
                 },

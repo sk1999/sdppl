@@ -45,22 +45,34 @@ class _Dsp extends State<Dos> {
       rG = value;
       switch (rG) {
         case 0:
-          myA = 'Rameshwar Colony, GIDC, Sachin';
+          setState(() {
+            myA = 'Rameshwar Colony, GIDC, Sachin';
+          });
           break;
         case 1:
-          myA = 'Unn patiya, Bhestan';
+          setState(() {
+            myA = 'Unn patiya, Bhestan';
+          });
           break;
         case 2:
-          myA = 'Ganesh Nagar, Pandesara';
+          setState(() {
+            myA = 'Ganesh Nagar, Pandesara';
+          });
           break;
         case 3:
-          myA = 'GHB, Pandesara';
+          setState(() {
+            myA = 'GHB, Pandesara';
+          });
           break;
         case 4:
-          myA = 'GHB, Sachin';
+          setState(() {
+            myA = 'GHB, Sachin';
+          });
           break;
         case 5:
-          myA = 'Slum Board , Sachin';
+          setState(() {
+            myA = 'Slum Board , Sachin';
+          });
           break;
       }
     });
@@ -303,7 +315,7 @@ class _Dsp extends State<Dos> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => Dop(myA),
+                      builder: (BuildContext context) => Dop(uid,name,fname,number,myA,myG,date),
                     ),
                   );
                 },

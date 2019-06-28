@@ -1,19 +1,40 @@
 import 'dart:io';
-
+import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Dud extends StatefulWidget {
+
+  final String uid, name, fname, number, myA, myG, mypa, pnumber, dpt, pos;
+  final DateTime date, jdate;
+
+  Dud(this.uid, this.name, this.fname, this.number, this.myA, this.myG, this.date, this.mypa, this.pnumber, this.dpt, this.pos, this.jdate);
+
   @override
   State<StatefulWidget> createState() {
-    return _Dip();
+    return _Dip(uid, name, fname, number, myA, myG, date, mypa, pnumber, dpt, pos, jdate);
   }
 }
 
 class _Dip extends State<Dud> {
 
+  String uid, name, fname, number, myA, myG, mypa, pnumber, dpt, pos;
+  DateTime date, jdate;
+
+  _Dip(this.uid, this.name, this.fname, this.number, this.myA, this.myG, this.date, this.mypa, this.pnumber, this.dpt, this.pos, this.jdate);
+
   int ra=0,v, s;
   File img1, img2;
+
+  void subForm(String uid, String name, String fname, String number, String myA, String myG, DateTime date, String mypa, String pnumber, String dpt, String pos, DateTime jdate) {
+    final Map<String, dynamic> emplData = {
+      'UID': uid;
+      'Name': name;
+      "father's name": fname;
+      'phone number': number;
+
+    };
+  }
 
   void radioEventHandler(int value) {
     setState(() {
