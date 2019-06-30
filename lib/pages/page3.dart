@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:http/http.dart';
+import '../services//crud.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -20,6 +20,7 @@ class _Dip extends State<Dud> {
 
   String uid, name, fname, number, myA, myG, mypa, pnumber, dpt, pos;
   DateTime date, jdate;
+  server crudobj = new server();
 
   _Dip(this.uid, this.name, this.fname, this.number, this.myA, this.myG, this.date, this.mypa, this.pnumber, this.dpt, this.pos, this.jdate);
 
@@ -28,12 +29,13 @@ class _Dip extends State<Dud> {
 
   void subForm(String uid, String name, String fname, String number, String myA, String myG, DateTime date, String mypa, String pnumber, String dpt, String pos, DateTime jdate) {
     final Map<String, dynamic> emplData = {
-      'UID': uid;
-      'Name': name;
-      "father's name": fname;
-      'phone number': number;
+      'UID': uid,
+      'Name': name,
+      "father's name" : fname,
+      'phone number': number,
 
     };
+    crudobj.add(emplData);
   }
 
   void radioEventHandler(int value) {
@@ -210,7 +212,7 @@ class _Dip extends State<Dud> {
                         .primaryColor,
                     child: Text('Submit'),
                     onPressed: () {
-
+                      subForm(uid, name, fname, number, myA, myG, date, mypa, pnumber, dpt, pos, jdate);
                     },
                   )
                 ],

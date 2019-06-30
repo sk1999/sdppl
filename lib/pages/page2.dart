@@ -362,7 +362,7 @@ class _Dss extends State<Dop> {
                     .primaryColor,
                 child: Text('Next'),
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) => Dud(uid, name, fname, number, myA, myG, date, mypa, pnumber, dpt, pos, jdate),

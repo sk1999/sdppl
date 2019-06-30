@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/page1.dart';
+import './pages/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,7 +17,7 @@ class _Pag extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Colors.white30),
-      home: Dos(),
+      home: AuthPage(),
     );
   }
 }

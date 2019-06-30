@@ -312,7 +312,7 @@ class _Dsp extends State<Dos> {
                     .primaryColor,
                 child: Text('Next'),
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) => Dop(uid,name,fname,number,myA,myG,date),
